@@ -1,0 +1,30 @@
+server:
+  port: 8083
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/filestoragedb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: filestorageapp
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  flyway:
+    user: filestorageadmin
+    password: password
+  profiles:
+    active: local, clean
+logging:
+  file:
+    name: logs/local/filestorage.log
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+
+
