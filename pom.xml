@@ -71,6 +71,16 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.5.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>1.0.66</version>
+        </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
@@ -144,6 +154,25 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <apiDocsUrl>http://localhost:8083/v3/api-docs.yaml</apiDocsUrl>
+                    <outputFileName>file-storage-api.yaml</outputFileName>
+                    <outputDir>openapi-spec</outputDir>
+                    <skip>false</skip>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

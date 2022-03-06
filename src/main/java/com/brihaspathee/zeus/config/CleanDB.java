@@ -18,6 +18,10 @@ import org.springframework.context.annotation.Profile;
 @Profile("clean")
 public class CleanDB {
 
+    /**
+     * The method will clean the DB on startup
+     * @return
+     */
     @Bean
     public FlywayMigrationStrategy clean(){
         return flyway -> {
