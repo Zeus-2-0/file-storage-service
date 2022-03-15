@@ -1,4 +1,10 @@
 spring:
+  kafka:
+    consumer:
+      group-id: file-info-consumer-group
+      enable-auto-commit: true
+      auto-offset-reset: earliest
+    bootstrap-servers: localhost:9092
   h2:
     console:
       enabled: true
