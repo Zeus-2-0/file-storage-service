@@ -4,6 +4,12 @@ zeus-file-storage:
 server:
   port: 8083
 spring:
+  kafka:
+    consumer:
+      group-id: file-info-consumer-group
+      enable-auto-commit: true
+      auto-offset-reset: earliest
+    bootstrap-servers: localhost:9092
   datasource:
     url: jdbc:mysql://localhost:3306/filestoragedb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: filestorageapp
