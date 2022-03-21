@@ -24,7 +24,7 @@ public class FileInfoConsumer {
 
     private final ObjectMapper objectMapper;
 
-    @KafkaListener(topics = "ZEUS.FILE.STORAGE.TOPIC")
+    @KafkaListener(topics = "ZEUS.FILE.STORAGE.TOPIC",groupId = "file-storage-group")
     public void consumeFileInfo(String fileInfo) throws JsonProcessingException {
         log.info("Message from the topic: {}", fileInfo);
         FileInfo fileDetail = objectMapper.readValue(fileInfo, FileInfo.class);
