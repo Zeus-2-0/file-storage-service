@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.brihaspathee.zeus</groupId>
     <artifactId>file-storage-service</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>File Storage Service</name>
     <description>Service that stores the contents of the file as a BLOB</description>
     <url>http://www.brihaspathee.com</url>
