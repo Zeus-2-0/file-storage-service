@@ -1,5 +1,6 @@
 package com.brihaspathee.zeus.consumer;
 
+import com.brihaspathee.zeus.web.model.FileDetailDto;
 import com.brihaspathee.zeus.web.model.FileInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,10 +26,10 @@ public class FileInfoConsumer {
     private final ObjectMapper objectMapper;
 
     @KafkaListener(topics = "ZEUS.FILE.STORAGE.TOPIC",groupId = "file-storage-group")
-    public void consumeFileInfo(String fileInfo) throws JsonProcessingException {
-        log.info("Message from the topic: {}", fileInfo);
-        FileInfo fileDetail = objectMapper.readValue(fileInfo, FileInfo.class);
-        log.info("File Info Detail Object: {}", fileDetail);
+    public void consumeFileInfo(String fileDetailDto) throws JsonProcessingException {
+        log.info("Message from the topic: {}", fileDetailDto);
+        FileDetailDto fileDetail = objectMapper.readValue(fileDetailDto, FileDetailDto.class);
+        log.info("File Detail Object: {}", fileDetail);
 
     }
 }
