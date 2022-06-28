@@ -1,7 +1,9 @@
 package com.brihaspathee.zeus.web.resource.interfaces;
 
 import com.brihaspathee.zeus.web.model.FileDetailDto;
+import com.brihaspathee.zeus.web.model.FileResponseDto;
 import com.brihaspathee.zeus.web.response.ZeusApiResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,9 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created in Intellij IDEA
@@ -49,4 +49,29 @@ public interface FileAPI {
     )
     @GetMapping(path="/{fileId}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<ZeusApiResponse<FileDetailDto>> getFileDetail(@PathVariable("fileId") String fileId);
+
+    /**
+     * This method will receive the details of the file with the transactions.
+     * @param fileDetailDto
+     * @return
+     * @throws JsonProcessingException
+     */
+    @Operation(
+            method = "POST",
+            description = "Receive the details of the file with all the transactions in the file",
+            tags = {"transaction-origination"}
+    )
+    @ApiResponses(
+            value = {
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Successfully received the details of the file and started to process",
+                            content = {
+                                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ZeusApiResponse.class))
+                            }
+                    )
+            }
+    )
+    @PostMapping
+    ResponseEntity<ZeusApiResponse<FileResponseDto>> postFileDetails(@RequestBody FileDetailDto fileDetailDto) throws JsonProcessingException;
 }
