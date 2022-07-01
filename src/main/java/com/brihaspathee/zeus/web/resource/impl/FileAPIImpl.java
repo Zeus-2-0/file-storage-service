@@ -1,6 +1,7 @@
 package com.brihaspathee.zeus.web.resource.impl;
 
 import com.brihaspathee.zeus.constants.ApiResponseConstants;
+import com.brihaspathee.zeus.services.interfaces.FileStorageService;
 import com.brihaspathee.zeus.web.model.FileDetailDto;
 import com.brihaspathee.zeus.web.model.FileResponseDto;
 import com.brihaspathee.zeus.web.resource.interfaces.FileAPI;
@@ -25,6 +26,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 public class FileAPIImpl implements FileAPI {
+
+    /**
+     * Service that contains the methods to store and retrieve the details of the file
+     */
+    private final FileStorageService fileStorageService;
+
+    /**
+     * Method to get the details of the file by file id
+     * @param fileId
+     * @return
+     */
     @Override
     public ResponseEntity<ZeusApiResponse<FileDetailDto>> getFileDetail(String fileId) {
         FileDetailDto fileDetailDto = FileDetailDto.builder().fileName("Test").build();
@@ -34,12 +46,17 @@ public class FileAPIImpl implements FileAPI {
         return ResponseEntity.ok(apiResponse);
     }
 
+    /**
+     * The method that is invoked to receive the file information from file management service
+     * @param fileDetailDto
+     * @return
+     * @throws JsonProcessingException
+     */
     @Override
-    public ResponseEntity<ZeusApiResponse<FileResponseDto>> postFileDetails(FileDetailDto fileDetailDto) throws JsonProcessingException {
+    public ResponseEntity<ZeusApiResponse<FileResponseDto>> postFileDetails(FileDetailDto fileDetailDto)
+            throws JsonProcessingException {
         log.info("Got the file details:{}", fileDetailDto);
-        FileResponseDto fileResponseDto = FileResponseDto.builder()
-                .fileReceiptAck("File Receipt Ack from file storage")
-                .build();
+        FileResponseDto fileResponseDto = fileStorageService.saveFileDetail(fileDetailDto);
         ZeusApiResponse<FileResponseDto> apiResponse = ZeusApiResponse.<FileResponseDto>builder()
                 .response(fileResponseDto)
                 .message(ApiResponseConstants.SUCCESS)
