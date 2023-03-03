@@ -24,6 +24,7 @@ spring:
   flyway:
     user: filestorageadmin
     password: password
+    clean-disabled: false
   profiles:
     active: local, clean
 logging:
