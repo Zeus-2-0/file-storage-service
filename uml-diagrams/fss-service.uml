@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.brihaspathee.zeus.services</OriginalElement>
+  <nodes>
+    <node x="-174.5" y="-67.5">com.brihaspathee.zeus.service.impl.FileStorageServiceImpl</node>
+    <node x="-129.5" y="136.6666666666667">com.brihaspathee.zeus.service.interfaces.FileStorageService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.brihaspathee.zeus.service.impl.FileStorageServiceImpl" target="com.brihaspathee.zeus.service.interfaces.FileStorageService" relationship="REALIZATION">
+      <point x="0.0" y="68.0" />
+      <point x="0.0" y="-31.5" />
+    </edge>
+  </edges>
+  <settings layout="Compact" zoom="1.5" showDependencies="false" x="23.0" y="23.333333333333314" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
