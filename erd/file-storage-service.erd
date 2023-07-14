@@ -1,0 +1,1 @@
+<diagram version="1" name="file-storage-service.erd" time="202306291317"><entities><data-source id="mysql8-18908274ada-1d31e55430eebff7"><entity id="1" name="file_storage_detail" fq-name="filestoragedb.file_storage_detail" order="0" border-width="3" x="32" y="25"><path name="filestoragedb"/></entity></data-source></entities><relations/></diagram>

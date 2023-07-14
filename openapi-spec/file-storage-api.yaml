@@ -13,6 +13,27 @@ servers:
 - url: http://localhost:8083
   description: Development Server
 paths:
+  /api/v1/file-storage:
+    post:
+      tags:
+      - transaction-origination
+      description: Receive the details of the file with all the transactions in the
+        file
+      operationId: postFileDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileDetailDto'
+        required: true
+      responses:
+        "201":
+          description: Successfully received the details of the file and started to
+            process
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZeusApiResponse'
   /api/v1/file-storage/{fileId}:
     get:
       tags:
@@ -34,6 +55,33 @@ paths:
                 $ref: '#/components/schemas/ZeusApiResponse'
 components:
   schemas:
+    FileDetailDto:
+      type: object
+      properties:
+        fileDetailSK:
+          type: string
+          format: uuid
+        zeusFileControlNumber:
+          type: string
+        fileName:
+          type: string
+        fileReceivedDate:
+          type: string
+          format: date-time
+        tradingPartnerId:
+          type: string
+        senderId:
+          type: string
+        receiverId:
+          type: string
+        lineOfBusinessTypeCode:
+          type: string
+        marketplaceTypeCode:
+          type: string
+        stateTypeCode:
+          type: string
+        fileData:
+          type: string
     ZeusApiResponse:
       type: object
       properties:
