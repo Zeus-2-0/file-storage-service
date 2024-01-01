@@ -2,9 +2,9 @@ package com.brihaspathee.zeus.services.impl;
 
 import com.brihaspathee.zeus.domain.entity.FileDetail;
 import com.brihaspathee.zeus.domain.repository.FileDetailRepository;
+import com.brihaspathee.zeus.dto.transaction.FileDetailDto;
 import com.brihaspathee.zeus.mapper.interfaces.FileDetailMapper;
 import com.brihaspathee.zeus.services.interfaces.FileStorageService;
-import com.brihaspathee.zeus.web.model.FileDetailDto;
 import com.brihaspathee.zeus.web.model.FileResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

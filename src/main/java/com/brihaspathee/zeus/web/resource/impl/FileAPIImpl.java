@@ -1,8 +1,8 @@
 package com.brihaspathee.zeus.web.resource.impl;
 
 import com.brihaspathee.zeus.constants.ApiResponseConstants;
+import com.brihaspathee.zeus.dto.transaction.FileDetailDto;
 import com.brihaspathee.zeus.services.interfaces.FileStorageService;
-import com.brihaspathee.zeus.web.model.FileDetailDto;
 import com.brihaspathee.zeus.web.model.FileResponseDto;
 import com.brihaspathee.zeus.web.resource.interfaces.FileAPI;
 import com.brihaspathee.zeus.web.response.ZeusApiResponse;
