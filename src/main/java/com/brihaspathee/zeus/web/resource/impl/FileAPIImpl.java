@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+
 /**
  * Created in Intellij IDEA
  * User: Balaji Varadharajan
@@ -64,5 +66,23 @@ public class FileAPIImpl implements FileAPI {
                 .statusCode(201)
                 .build();
         return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
+    }
+
+    /**
+     * Clean up the entire db
+     * @return
+     */
+    @Override
+    public ResponseEntity<ZeusApiResponse<String>> cleanUp() {
+        fileStorageService.deleteAll();
+        ZeusApiResponse<String> apiResponse = ZeusApiResponse.<String>builder()
+                .response("Request deleted successfully")
+                .statusCode(204)
+                .status(HttpStatus.NO_CONTENT)
+                .developerMessage(ApiResponseConstants.SUCCESS)
+                .message(ApiResponseConstants.SUCCESS_REASON)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return new ResponseEntity<>(apiResponse, HttpStatus.NO_CONTENT);
     }
 }
