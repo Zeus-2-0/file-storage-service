@@ -50,4 +50,12 @@ public class FileStorageServiceImpl implements FileStorageService {
                 .build();
         return fileResponseDto;
     }
+
+    /**
+     * Clean up the entire database
+     */
+    @Override
+    public void deleteAll() {
+        fileDetailRepository.deleteAll();
+    }
 }

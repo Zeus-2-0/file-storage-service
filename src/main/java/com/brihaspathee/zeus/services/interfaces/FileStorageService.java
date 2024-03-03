@@ -15,9 +15,14 @@ import com.brihaspathee.zeus.web.model.FileResponseDto;
 public interface FileStorageService {
 
     /**
-     * Saves the file details in the data base and returns the file response dto
+     * Saves the file details in the database and returns the file response dto
      * @param fileDetailDto
      * @return
      */
     FileResponseDto saveFileDetail(FileDetailDto fileDetailDto);
+
+    /**
+     * Clean up the entire database
+     */
+    void deleteAll();
 }

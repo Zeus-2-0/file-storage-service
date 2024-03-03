@@ -74,4 +74,24 @@ public interface FileAPI {
     )
     @PostMapping
     ResponseEntity<ZeusApiResponse<FileResponseDto>> postFileDetails(@RequestBody FileDetailDto fileDetailDto) throws JsonProcessingException;
+
+    /**
+     * Clean up the entire db
+     * @return
+     */
+    @Operation(
+            operationId = "Delete all data",
+            method = "DELETE",
+            description = "Delete all data",
+            tags = {"file-mgmt"}
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204",
+                    description = "Data deleted successfully",
+                    content = {
+                            @Content(mediaType = "application/json",schema = @Schema(implementation = ZeusApiResponse.class))
+                    })
+    })
+    @DeleteMapping("/delete")
+    ResponseEntity<ZeusApiResponse<String>> cleanUp();
 }
