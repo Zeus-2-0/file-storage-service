@@ -24,7 +24,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FileDetailDto'
+              $ref: "#/components/schemas/FileDetailDto"
         required: true
       responses:
         "201":
@@ -33,7 +33,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ZeusApiResponse'
+                $ref: "#/components/schemas/ZeusApiResponse"
   /api/v1/file-storage/{fileId}:
     get:
       tags:
@@ -52,7 +52,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ZeusApiResponse'
+                $ref: "#/components/schemas/ZeusApiResponse"
   /api/v1/file-storage/delete:
     delete:
       tags:
@@ -65,7 +65,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ZeusApiResponse'
+                $ref: "#/components/schemas/ZeusApiResponse"
 components:
   schemas:
     FileDetailDto:
@@ -102,7 +102,26 @@ components:
         transactionControlNumbers:
           type: array
           items:
-            $ref: '#/components/schemas/ZeusTransactionControlNumber'
+            $ref: "#/components/schemas/ZeusTransactionControlNumber"
+    PremiumPaymentDto:
+      required:
+      - enrollmentSpanCode
+      - paymentAmount
+      - paymentDate
+      type: object
+      properties:
+        enrollmentSpanCode:
+          type: string
+          description: Enrollment Span Code
+          example: IDNTD4VNLJK9VL3
+        paymentAmount:
+          type: number
+          description: Premium Amount being paid
+          example: 350.0
+        paymentDate:
+          type: string
+          description: The payment date of the premium span
+          format: date
     TestAccountEntityCodes:
       type: object
       properties:
@@ -115,7 +134,7 @@ components:
         memberEntityCodes:
           type: array
           items:
-            $ref: '#/components/schemas/TestMemberEntityCodes'
+            $ref: "#/components/schemas/TestMemberEntityCodes"
     TestMemberEntityCodes:
       type: object
       properties:
@@ -135,7 +154,11 @@ components:
         ztcn:
           type: string
         accountEntityCodes:
-          $ref: '#/components/schemas/TestAccountEntityCodes'
+          $ref: "#/components/schemas/TestAccountEntityCodes"
+        premiumPayments:
+          type: array
+          items:
+            $ref: "#/components/schemas/PremiumPaymentDto"
     ZeusApiResponse:
       type: object
       properties:
